@@ -5,9 +5,7 @@ const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
 const urlencodedParser = bodyParser.urlencoded({ extended: false });
-const friends = {
-  grandpa: "3958866477502819",
-};
+const friends = {};
 app.post("/msg", urlencodedParser, (req, res) => {
   const receivedMsg = req.body.Body;
   const nameAndMessage = receivedMsg.split(",").map((msg, index) => {
@@ -52,8 +50,8 @@ app.post("/reverse", bodyParser.json(), (req, res) => {
   client.messages
     .create({
       body: req.body.message.content.text,
-      from: "+15155178771",
-      to: "+201090582818",
+      from: "Your twilio number here",
+      to: "your phone number here",
     })
     .then((message) => console.log(message.sid));
   res.status(200).send();
